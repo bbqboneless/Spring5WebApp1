@@ -1,8 +1,17 @@
 package guru.springframework.spring5webapp.domain;
 
-import java.util.Set;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
+import java.util.Set;
+@Entity
 public class Book {
+    //add primary key
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String title;
     private String isbn;
     private Set<Author> authors;
@@ -13,6 +22,14 @@ public class Book {
         this.title = title;
         this.isbn = isbn;
         this.authors = authors;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitle() {
